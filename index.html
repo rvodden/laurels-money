@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src https://sheets.googleapis.com https://www.googleapis.com; manifest-src 'self'">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#1f5c3a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Money">
+<title>Laurels money</title>
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="/icons/favicon-64.png">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="bar">
+  <h1>Laurels money</h1>
+  <button class="refresh" id="refresh" aria-label="Refresh">↻</button>
+</header>
+<main class="wrap">
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" data-page="week" aria-selected="true">This week</button>
+    <button class="tab" role="tab" data-page="month" aria-selected="false">This pay month</button>
+  </div>
+
+  <div class="card msg" id="signin" hidden>
+    <p id="signin-text">Sign in with the Google account that can open Laurel's Bills.</p>
+    <button class="primary" id="signin-button">Sign in with Google</button>
+  </div>
+  <p class="msg" id="msg" hidden></p>
+
+  <section id="week" hidden>
+    <div class="card hero">
+      <p class="kicker" id="week-kicker"></p>
+      <p class="big" id="week-big"></p>
+      <p class="sub" id="week-sub"></p>
+      <p class="note" id="week-carry"></p>
+      <p class="note" id="week-perday"></p>
+    </div>
+    <ul id="week-list"></ul>
+    <p class="foot">Weekly allowances carry over within a pay month: money not spent (or overspent) in earlier weeks is added to (or taken off) this week, and everything starts fresh on payday, the 28th. In the week payday falls in, the week starts on payday with a matching share of the allowance.</p>
+  </section>
+
+  <section id="month" hidden>
+    <div class="card hero">
+      <p class="kicker" id="month-kicker"></p>
+      <p class="big" id="month-big"></p>
+      <p class="sub" id="month-sub"></p>
+      <p class="note" id="month-pace"></p>
+    </div>
+    <ul id="month-list"></ul>
+    <p class="foot">The thin line on each bar is where spending would be if it ran evenly from payday to payday.</p>
+  </section>
+
+  <p class="foot" id="updated"></p>
+  <p class="foot">From Laurel's Bills, which reads Emma. Card payments can take a day or two to reach Emma, so recent spending may be missing.</p>
+</main>
+<script src="/config.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>
