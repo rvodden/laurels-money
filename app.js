@@ -1,6 +1,11 @@
 // Laurels money: reads the DashWeek, DashMonth and EmmaFileId named ranges of
 // Laurel's Bills with the signed-in person's own Google access.
 (() => {
+  // Google only accepts the https address, so never sign in from http.
+  if (location.protocol === 'http:' && location.hostname !== 'localhost') {
+    location.replace('https://' + location.host + location.pathname + location.search + location.hash);
+    return;
+  }
   const cfg = window.LAURELS_CONFIG;
   const SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly https://www.googleapis.com/auth/drive.metadata.readonly';
   const TOKEN_KEY = 'lm.token';
